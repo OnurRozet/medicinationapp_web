@@ -1,7 +1,10 @@
 'use client'
-import UserService from '@/services/userIdentityService'
+import AllRoutes from '@/services/allRoutes'
+import UserService from '../../services/userIdentityService'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 
 const Register = () => {
@@ -14,41 +17,35 @@ const Register = () => {
     const [password,setPassword]=useState("")
     const [confirmPassword,setConfirmPassword]=useState("")
 
-    const datas={
-        userName:userName,
-        name:name,
-        surname:surname,
-        phone:phone,
-        email:email,
-        password:password,
-        confirmPassword:confirmPassword
-    };
+    const router=useRouter();
 
-  const userRegister=async(name,surname,phone,email,password,confirmPassword,userName)=>{
-    debugger
-  const data= await UserService.register(userName,name,surname,phone,email,password,confirmPassword)
-    console.log(data.data);
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        if(password!==confirmPassword){
+            return  toast.error('Passwords do not match')
+        }
+        userRegister()
+    }
+
+  const userRegister=async()=>{
+ return await UserService.register(userName,name,surname,email,phone,password,confirmPassword)
+    .then(()=>{
+        toast.success("Kayıt olma işlemi başarılı",{
+            position:"bottom-right",
+        })
+        router.push(AllRoutes.login);
+    }).catch(()=>{
+        toast.error("Kayıt olma işlemi gerçekleştirilememiştir.")
+    })
    
   }
-
-// const userData=async(name,surname,phone,email,password,confirmPassword,userName)=>{
-//     var data=await fetch("https://localhost:7020/api/Accounts/SignUp",{
-//         method:"POST",
-//       requestData:datas
-//     })
-//     var res=await data.json()
-
-//     if(res.ok){
-//         console.log(res);
-//     }
-// }
 
 
   return (
     <section>
     <div className="form-box">
         <div className="form-value">
-            <form method='post'> 
+            <form method='post' onSubmit={handleSubmit}> 
                 <h2>Register</h2>
                 <div className="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
@@ -67,7 +64,7 @@ const Register = () => {
                 </div>
                 <div className="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="phone" required onChange={(e)=>setPhone(e.target.value)}/>
+                    <input type="tel" required onChange={(e)=>setPhone(e.target.value)}/>
                     <label >Telefon Numaranız</label>
                 </div>
                 <div className="inputbox">
@@ -85,7 +82,7 @@ const Register = () => {
                     <input type="password" required onChange={(e)=>setConfirmPassword(e.target.value)}/>
                     <label>Şifre Tekrar</label>
                 </div>
-                <button onClick={()=>userRegister(name,surname,phone,email,password,confirmPassword,userName)}>Register</button>
+                <button>Register</button>
                 <div className="register">
                     <p>Bir Hesabınız Var Mı? <Link href="/Login">Login</Link></p>
                 </div>
@@ -95,32 +92,5 @@ const Register = () => {
 </section>
   )
 }
-
-// export const getServerSideProps=async()=>{
-//    const data= UserService.register(userName,name,surname,phone,email,password,confirmPassword)
-//     .then(res=>console.log(res.data))
-//     .catch(err=>console.log(err))
-//     .finally(()=>{
-//         router.push(AllRoutes.login)
-//     })
-    
-//     if(data){
-//         return {
-//             redirect:{
-//                 destination: AllRoutes.login,
-//             },
-//             props:{
-//                 data
-//             }
-            
-//         }
-//     }
-    
-            
-    
-
- 
-
-// }
 
 export default Register

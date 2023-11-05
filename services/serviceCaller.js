@@ -26,9 +26,9 @@ export async function Get(
   return axios.get(BASE_URI + `${endpointUri}`, {
     headers: getHeaders(isAnonymous, clientToken),
     params: requestData ? { ...requestData } : undefined,
-    httpsAgent: new https.Agent({
-      rejectUnauthorized: process.env.NODE_ENV !== "development",
-    }),
+    // httpsAgent: new https.Agent({
+    //   rejectUnauthorized: process.env.NODE_ENV !== "development",
+    // }),
   });
 }
 export async function Put(
@@ -38,10 +38,10 @@ export async function Put(
   clientToken
 ) {
   return axios.put(BASE_URI + `${endpointUri}`, requestData, {
-    headers: getHeaders(isAnonymous, clientToken),
-    httpsAgent: new https.Agent({
-      rejectUnauthorized: process.env.NODE_ENV !== "development",
-    }),
+     headers: getHeaders(isAnonymous, clientToken),
+    // httpsAgent: new https.Agent({
+    //   rejectUnauthorized: process.env.NODE_ENV !== "development",
+    // }),
   });
 }
 export async function Post(
@@ -70,9 +70,9 @@ export async function Delete(
   return axios.delete(BASE_URI + `${endpointUri}`, {
     headers: getHeaders(isAnonymous, clientToken),
     params: { ...requestData },
-    httpsAgent: new https.Agent({
-      rejectUnauthorized: process.env.NODE_ENV !== "development",
-    }),
+    // httpsAgent: new https.Agent({
+    //   rejectUnauthorized: process.env.NODE_ENV !== "development",
+    // }),
   });
 }
 

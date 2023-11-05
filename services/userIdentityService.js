@@ -3,13 +3,13 @@ const { Post } = require("./serviceCaller")
 
 const UserService={
 
-    register:(username,name,surname,phoneNumber,email,password,confirmPassword)=>{
+    register:(username,name,surname,email,phoneNumber,password,confirmPassword)=>{
         return Post(AllEndpoints.register,{
             username:username,
             name:name,
             surname:surname,
-            phoneNumber:phoneNumber,
             email:email,
+            phone:phoneNumber,
             password:password,
             confirmPassword:confirmPassword
         })
@@ -19,7 +19,7 @@ const UserService={
         return Post(AllEndpoints.login,{
             email:email,
             password:password,
-            rememberMe:rememberMe
+            rememberMe:Boolean(rememberMe)
         })
     },
 
