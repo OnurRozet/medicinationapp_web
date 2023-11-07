@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
+import CookieUtil from '../utils/cookieUtils'
 
 
 const Register = () => {
@@ -29,10 +30,11 @@ const Register = () => {
 
   const userRegister=async()=>{
  return await UserService.register(userName,name,surname,email,phone,password,confirmPassword)
-    .then(()=>{
+    .then((res)=>{
         toast.success("Kayıt olma işlemi başarılı",{
             position:"bottom-right",
         })
+       CookieUtil.setUser(res.data)
         router.push(AllRoutes.login);
     }).catch(()=>{
         toast.error("Kayıt olma işlemi gerçekleştirilememiştir.")

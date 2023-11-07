@@ -4,7 +4,8 @@ const AllRoutes={
     register:"/Register",
     forgotPassword:"/ForgotPassword",
     dashboard:"/DashBoard",
-    resetPassword:"/ResetPassword"
+    resetPassword:"/ResetPassword",
+    member:"/Member"
 }
 
 export default AllRoutes;
