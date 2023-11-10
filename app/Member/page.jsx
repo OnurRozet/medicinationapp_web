@@ -12,21 +12,37 @@ import AddMember from '../components/addMember';
 const Member = () => {
 
   const [cookieUser,setCookieUser]=useState();
+  const [control, setControl] = useState(false);
   const [name,setName]=useState("");
   const [surname,setSurname]=useState("");
   const [gender,setGender]=useState("kadın");
   const [members,setMembers]=useState([])
- 
- 
 
   const router =useRouter();
   
   const savedUser=CookieUtil.getUser();
 
-  
+  useEffect(()=>{
+   
+    if(!savedUser){
+      router.push(AllRoutes.register)
+    }
+    setCookieUser(savedUser);
+    if(members.length===0 || control){
+   
+      setName("")
+      setSurname("")
+      fetchDataMembers()
+      setControl(false)
+    }
+   
+},[control])
+
+ 
  const fetchDataMembers=async()=>{
    
     await   MemberService.getAllMembers().then((res) => {
+      
         if (res.data.data) {
           setMembers(res.data.data);
         } else {
@@ -44,37 +60,16 @@ const Member = () => {
 
 
 
-  const addedMember=()=>{
-    return MemberService.addMember(name,surname,EnumUtil.getGenderUtil(gender),savedUser.id)
+  const addedMember=async()=>{
+    return await MemberService.addMember(name,surname,EnumUtil.getGenderUtil(gender),savedUser.id)
         .then(()=>{
+          setControl(true)
           toast.success("Aile üyesi başarılı bir şekilde eklenmiştir.")
          setMembers([...members,members])
         }).catch(()=>{
           toast.error("Aile üyesi eklenemedi.")
         })
   }
-
-
-  useEffect(()=>{
-   
-    if(!savedUser){
-      router.push(AllRoutes.register)
-    }
-    setCookieUser(savedUser);
-    if(members.length===0){
-      fetchDataMembers()
-    }
-   
-},[])
-
-
-
-console.log(members);
-
-
-
-
-
 
   return (
     <div className=" flex justify-center items-center">
@@ -90,12 +85,14 @@ console.log(members);
             type="text"
             className="form-control border border-gray-600 rounded-lg p-1 w-[350px]"
             placeholder="Aile üyesinin adını giriniz..."
+            value={name}
             onChange={(e)=>setName(e.target.value)}
           />
           <input
             type="text"
             className="form-control border border-gray-600 rounded-lg p-1 w-[350px]"
             placeholder="Aile üyesinin soyadını giriniz..."
+            value={surname}
             onChange={(e)=>setSurname(e.target.value)}
           />
           <div className="form-check">
