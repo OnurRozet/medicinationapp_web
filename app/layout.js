@@ -23,22 +23,40 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-         <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-        crossOrigin="anonymous"
-      />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous"
+        ></link>
       </Head>
-     
+
       <body className={inter.className}>
         {children}
         <ToastContainer autoClose="1500" />
-        <Script id='my-scripts' src='https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js'/>
-        <Script id='my-scripts' src='https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js'/>
-        <Script id='my-scripts' src='https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js'/>
+        <Script
+          id="my-scripts"
+          src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"
+        />
+        <Script
+          id="my-scripts"
+          src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
+        />
+        <Script
+          id="my-scripts"
+          src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
+        />
+        <Script
+          id="my-scripts"
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        />
       </body>
-   
     </html>
   );
 }

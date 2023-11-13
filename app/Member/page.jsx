@@ -22,6 +22,8 @@ const Member = () => {
   
   const savedUser=CookieUtil.getUser();
 
+  console.log(members);
+
   useEffect(()=>{
    
     if(!savedUser){
@@ -65,7 +67,7 @@ const Member = () => {
         .then(()=>{
           setControl(true)
           toast.success("Aile üyesi başarılı bir şekilde eklenmiştir.")
-         setMembers([...members,members])
+         setMembers(...members,members)
         }).catch(()=>{
           toast.error("Aile üyesi eklenemedi.")
         })
@@ -74,6 +76,7 @@ const Member = () => {
   return (
     <div className=" flex justify-center items-center">
       <div className=" flex flex-col justify-center items-center gap-10 border rounded-xl w-auto h-auto  p-12 mt-20 shadow-2xl">
+        <h2>Merhaba {savedUser.name}</h2>
         <h2 className=" text-gray-700 text-5xl">
           İlaç Takip Sistemine Hoş Geldiniz.
         </h2>
@@ -126,7 +129,7 @@ const Member = () => {
         </div>
         <div className='flex flex-col items-center justify-center gap-2'>
           <button className='border bg-green-700 text-white hover:bg-green-500' onClick={addedMember}>Ekle</button>
-          <button className="border bg-gray-800 text-white p-2">Devam Et</button>
+          <button className="border bg-gray-800 text-white p-2" >Devam Et</button>
         </div>
         {
           members && members.length>0 ?(

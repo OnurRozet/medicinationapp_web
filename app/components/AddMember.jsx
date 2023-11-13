@@ -7,17 +7,17 @@ import MemberService from '@/services/memberService';
 import { toast } from 'react-toastify';
 
 const AddMember = ({members}) => {
-    const [data,setData]=useState([members])
+    const [data,setData]=useState(members)
     const [control,setControl]=useState(false)
 
-    console.log(data);
+    console.log(members);
 
     useEffect(() => {
       if (!data || control) {
         fetchDataMembers();
         setControl(false);
       }
-    }, [control]);
+    }, [data,control]);
 
     const deleteMembers=async(id)=>{
       await MemberService.deleteMember(id)
@@ -61,14 +61,13 @@ const AddMember = ({members}) => {
           </tr>
         </thead>
         <tbody>
-          {data && data.map((item, index) => (
+          {data && data.length>0  && data.map((item, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{item.name}</td>
               <td>{item.surname}</td>
               <td className='flex flex-row gap-2'>
                 <Button variant="danger" size='sm' onClick={()=>deleteMembers(item.id)}>Sil</Button>
-               
               </td>
             </tr>
           ))}
