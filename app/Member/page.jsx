@@ -22,7 +22,7 @@ const Member = () => {
   
   const savedUser=CookieUtil.getUser();
 
-  console.log(members);
+  console.log(savedUser);
 
   useEffect(()=>{
    
@@ -141,20 +141,5 @@ const Member = () => {
   );
 }
 
-// export async function getServerSideProps() {
-
-//  let data= MemberService.getAllMembers().then((res) => {
-//     if (res.data.data) {
-//       setMembers(res.data.data);
-//     } else {
-//       setMembers([]); // Veri null ise, boş bir dizi olarak ayarla
-//     }
-//   }) .catch((error) => {
-//     console.error("Veriler alınamadı:", error);
-//   });;
- 
-  
-//   return { props: { data } }
-// }
 
 export default Member

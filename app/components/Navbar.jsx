@@ -8,13 +8,13 @@ const Navbar = () => {
 
     const navbarList = [
         {
-          name: 'Ana Sayfa',
-          path: '/home',
-          icon: 'fas fa-home'
+          name: 'İlaç Listesi',
+          path: '/Dashboard',
+          icon: 'bi bi-capsule'
         },
         {
-          name: 'Eğitim Videosu',
-          path: '/videoCrud',
+          name: 'İlaç Ekle',
+          path: '/AddMedicine',
           icon: 'fas fa-book-open'
         },
         {
@@ -67,8 +67,10 @@ const Navbar = () => {
                 {
                     navbarList.map((item,i)=>(
                         <li key={i}>
+                          
                             <Link className='nav-link active ms-2' href={item.path}>
                                 {item.name}
+                                <i className={item.icon}></i>
                             </Link>
                         </li>
                     ))

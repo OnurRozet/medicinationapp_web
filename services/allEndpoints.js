@@ -6,7 +6,11 @@ const AllEndpoints= {
     getAllMember:"/api/Members/GetAll",
     getByIdMember:"/api/Members/GetById/:memberId",
     addMember:"/api/Members/AddMember",
-    deleteMember:"/api/Members/DeleteMember?id=:memberId"
+    deleteMember:"/api/Members/DeleteMember?id=:memberId",
+    getAllCategory:"api/Categories",
+    deleteCategory:"api/Categories?id=:categoryId",
+    addCategory:"api/Categories/",
+    updateCategory:"api/Categories/"
     
 }
 export default AllEndpoints;
