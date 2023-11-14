@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Title from '../components/Title'
+import Container from '../components/Container'
 
 
 const Dashboard = () => {
@@ -11,6 +12,7 @@ const Dashboard = () => {
     <div>
       <Title/>
       <Navbar/>
+      <Container/>
     </div>
   )
 }

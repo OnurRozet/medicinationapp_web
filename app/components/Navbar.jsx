@@ -18,8 +18,8 @@ const Navbar = () => {
           icon: 'fas fa-book-open'
         },
         {
-          name: 'Roller',
-          path: '/rol',
+          name: 'İlaç Kategorileri',
+          path: '/Category',
           icon: 'fas fa-user-tag'
         },
         {
