@@ -9,12 +9,12 @@ const Navbar = () => {
     const navbarList = [
         {
           name: 'İlaç Listesi',
-          path: '/Dashboard',
+          path: '/ListOfMedicine',
           icon: 'bi bi-capsule'
         },
         {
           name: 'İlaç Ekle',
-          path: '/AddMedicine',
+          path: '/Medicine',
           icon: 'fas fa-book-open'
         },
         {

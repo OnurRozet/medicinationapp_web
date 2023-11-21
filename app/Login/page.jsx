@@ -23,7 +23,6 @@ const Login = () => {
         if(!email || !password){
             return toast.error("Email veya şifre hatalı")
         }
-
         userLogin();
     }
 

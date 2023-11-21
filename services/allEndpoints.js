@@ -10,7 +10,11 @@ const AllEndpoints= {
     getAllCategory:"/api/Categories",
     deleteCategory:"/api/Categories?id=:categoryId",
     addCategory:"/api/Categories",
-    updateCategory:"/api/Categories"
+    updateCategory:"/api/Categories",
+    getAllmedicine:"/api/Medicines",
+    deletemedicine:"/api/Medicines?id=:medicineId",
+    addMedicine:"/api/Medicines",
+    updateMedicine:"/api/Medicines",
     
 }
 export default AllEndpoints;
