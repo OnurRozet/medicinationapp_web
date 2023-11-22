@@ -6,14 +6,15 @@ const MedicineService = {
     return Get(AllEndpoints.getAllmedicine);
   },
 
-  addMedicine: (medicinename,description,expirationTime,usage,memberName,categoryname) => {
-    return Post(AllEndpoints.addCategory, {
+  addMedicine: (medicinename,description,expirationTime,usage,memberId,categoryName,categoryId) => {
+    return Post(AllEndpoints.addMedicine, {
       medicinename,
       description,
       expirationTime,
       usage,
-      memberName,
-      categoryname,
+      memberId,
+      categoryName,
+      categoryId
     });
   },
 

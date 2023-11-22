@@ -28,6 +28,7 @@ const ListOfMedicine = () => {
       console.log(medicine);
 
 
+
     const columns = [
         {
           name: "Id",
